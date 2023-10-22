@@ -7,7 +7,6 @@ from models.place import Place
 from sqlalchemy.ext.declarative import declarative_base
 
 
-
 class City(BaseModel, Base):
     """ The city class, contains state ID and name """
 
