@@ -34,7 +34,10 @@ class DBStorage:
 
         classes = []
         if cls:
-            classes = [cls]
+            if type(cls) is str:
+                classes = [eval(cls)]
+            else:
+                classes = [cls]
         else:
             classes = [City, Place, State, User, Review, Amenity]
 
