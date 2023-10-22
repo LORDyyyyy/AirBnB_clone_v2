@@ -40,7 +40,7 @@ class DBStorage:
 
         objects = {}
         for clas in classes:
-            for obj in self.__session.query(eval(clas)):
+            for obj in self.__session.query(clas):
                 key = "{}.{}".format(type(obj).__name__, obj.id)
                 objects[key] = obj
 
@@ -70,3 +70,10 @@ class DBStorage:
         my_session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(my_session)
         self.__session = Session()
+
+    def close(self):
+        """
+            close Session
+        """
+
+        self.__session.close()
